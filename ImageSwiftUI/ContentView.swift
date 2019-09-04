@@ -15,28 +15,36 @@ struct ContentView : View {
                 Image("sansa")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .relativeSize(width: 1, height: 1)
-                    .clipped()
                     .blur(radius: 10, opaque: true)
                 
                 Image("sansa")
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .relativeSize(width: 0.4, height: 0.4)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 100, height: 100)
                     .clipShape(Circle())
-                    .shadow(radius: 10)
+                .shadow(radius: 10)
             }
+        
             
             VStack(alignment: .leading) {
-                Text("Sansa Stark")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                
-                Text("Lady of Winterfell")
-                    .font(.headline)
+                HStack {
+                    Image("stark")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 50, height: 50)
+                    
+                    VStack(alignment: .leading) {
+                        Text("Sansa Stark")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                        
+                        Text("Lady of Winterfell")
+                            .font(.headline)
+                    }
+                }
                 
                 Text("Sansa Stark is a fictional character created by American author George R. R. Martin. She is a prominent character in Martin's award-winning A Song of Ice and Fire series.")
-                    .lineLimit(nil)
+                    .lineLimit(4)
                     .padding(.top)
                 
                 }
@@ -51,12 +59,7 @@ struct ContentView : View {
 #if DEBUG
 struct ContentView_Previews : PreviewProvider {
     static var previews: some View {
-        Group {
-            ContentView()
-            
-            ContentView()
-                .previewDevice("iPad Pro (9.7-inch)")
-        }
+        ContentView()
     }
 }
 #endif
